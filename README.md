@@ -16,4 +16,12 @@ The contract attaches exact original rules and computes conflict edges, degrees,
 
 Requires Node.js 20+ and Python 3.12+. Run `npm install --ignore-scripts` and `python tests.py`. Place a dedicated test key in ignored local `pk.txt`. Call `node scripts/run.mjs create_case <scope> <JSON-array-of-rules>`, then `node scripts/run.mjs analyze <case-id>`. Use `get_case` or `list_cases` for reads; `node scripts/run.mjs` prints a read-only snapshot. Writes wait for finalization, guard network identity and record actual settled test-GEN costs. Never upload keys or logs.
 
-Deployment and finalized interaction evidence will be documented after verification. No Portal approval or points are claimed.
+Verified on Bradbury Phase 2 (4221). Contract 0x32E28dF41341d50B910e7f65B8a6dc585304621F. All demo operations finalized. Full exact state is in demo-result.json.
+
+Total including deployment: 0.000299954750006351 GEN. Interaction workflow: 0.000170551170004234 GEN.
+
+- deploy: https://scan.bradbury.genlayer.com/tx/0x7f38ad1961ea928f4aff9937db3241632b5a43312bcfe493cd20fbc7ec2544fd
+- create_case: https://scan.bradbury.genlayer.com/tx/0xdc5b29b1a0b4079e1e2961f0d1f6b52ec506ac6eb4dc9f1d88ef3469ed98e55e
+- analyze: https://scan.bradbury.genlayer.com/tx/0x01c78f3df959967bf0414c03d080dfa444ca5bc7b11dc6da0e2963359d982522
+
+No Portal approval or points are claimed.

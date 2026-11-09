@@ -1,0 +1,149 @@
+{
+  "wallet": "0xF10aB469555eb723d62A565217EE678A8C200526",
+  "contract": "0x32E28dF41341d50B910e7f65B8a6dc585304621F",
+  "chainId": 4221,
+  "network": "Bradbury Phase 2",
+  "balanceGEN": "99.998196674699962954",
+  "netCostGEN": "0.000299954750006351",
+  "balanceChangeGEN": "0.000299954750006351",
+  "transactions": [
+    {
+      "action": "deploy",
+      "contract": "0x32E28dF41341d50B910e7f65B8a6dc585304621F",
+      "startedAt": "2026-11-09T12:58:37.638Z",
+      "beforeWei": "99998496629449969305",
+      "feeDepositWei": "25000000000004235",
+      "status": "finalized",
+      "maxCostWei": "25140514800004235",
+      "evmHash": "0x6d50d53caddc3bca8de16f6a78959f68fc322cde50c1a489949a42d7958128cf",
+      "txId": "0x7f38ad1961ea928f4aff9937db3241632b5a43312bcfe493cd20fbc7ec2544fd",
+      "error": "An unknown RPC error occurred.",
+      "finalizedAt": "2026-11-09T13:19:05.216Z",
+      "protocolStatus": "FINALIZED",
+      "executionResult": "FINISHED_WITH_RETURN",
+      "afterWei": "99998367225869967188",
+      "netCostWei": "129403580002117",
+      "netCostGEN": "0.000129403580002117",
+      "gasUsed": "6746883",
+      "gasPriceWei": "10000000",
+      "evmFeeWei": "67468830000000"
+    },
+    {
+      "action": "create_case",
+      "contract": "0x32E28dF41341d50B910e7f65B8a6dc585304621F",
+      "startedAt": "2026-11-09T13:19:24.322Z",
+      "beforeWei": "99998367225869967188",
+      "feeDepositWei": "25000000000004235",
+      "status": "finalized",
+      "maxCostWei": "25048873240004235",
+      "evmHash": "0x39a2cf29d2687794beca43ef2028fc30754aa71d8e3a4651b9b2e6e06c1df4e3",
+      "txId": "0xdc5b29b1a0b4079e1e2961f0d1f6b52ec506ac6eb4dc9f1d88ef3469ed98e55e",
+      "finalizedAt": "2026-11-09T13:21:09.787Z",
+      "protocolStatus": "FINALIZED",
+      "executionResult": "FINISHED_WITH_RETURN",
+      "afterWei": "99998282325249965071",
+      "netCostWei": "84900620002117",
+      "netCostGEN": "0.000084900620002117",
+      "gasUsed": "2300937",
+      "gasPriceWei": "10000000",
+      "evmFeeWei": "23009370000000"
+    },
+    {
+      "action": "analyze",
+      "contract": "0x32E28dF41341d50B910e7f65B8a6dc585304621F",
+      "startedAt": "2026-11-09T13:21:43.973Z",
+      "beforeWei": "99998282325249965071",
+      "feeDepositWei": "25000000000004235",
+      "status": "finalized",
+      "maxCostWei": "25043089360004235",
+      "evmHash": "0x99d90036df6caf60f30cc3413140972824648f4303936cbeb722030a449a015b",
+      "txId": "0x01c78f3df959967bf0414c03d080dfa444ca5bc7b11dc6da0e2963359d982522",
+      "finalizedAt": "2026-11-09T13:23:41.659Z",
+      "protocolStatus": "FINALIZED",
+      "executionResult": "FINISHED_WITH_RETURN",
+      "afterWei": "99998196674699962954",
+      "netCostWei": "85650550002117",
+      "netCostGEN": "0.000085650550002117",
+      "gasUsed": "2046455",
+      "gasPriceWei": "10000000",
+      "evmFeeWei": "20464550000000"
+    }
+  ],
+  "pending": false,
+  "total": 1,
+  "items": [
+    {
+      "analysis": {
+        "conflict_degree": [
+          1,
+          1,
+          0
+        ],
+        "conflict_edges": [
+          [
+            1,
+            2
+          ]
+        ],
+        "pairs": [
+          {
+            "reason": "Scope states reviews are not complete at creation, so rule 1's immediate publication necessarily occurs while rule 2 forbids publication.",
+            "relation": "conflict",
+            "rule_ids": [
+              1,
+              2
+            ],
+            "rules": [
+              "Publish every ticket immediately when it is created.",
+              "Never publish a ticket until its review is complete."
+            ],
+            "witness": "A new ticket is created; its review is still in progress. Rule 1 requires publishing it right then, but rule 2 forbids publishing until the review finishes."
+          },
+          {
+            "reason": "Publishing immediately and retaining a private backup copy for thirty days can both be satisfied simultaneously; rule 3 restricts only the backup, not publication.",
+            "relation": "compatible",
+            "rule_ids": [
+              1,
+              3
+            ],
+            "rules": [
+              "Publish every ticket immediately when it is created.",
+              "Keep a private backup copy of each ticket for thirty days."
+            ],
+            "witness": ""
+          },
+          {
+            "reason": "Delaying publication until review completion and keeping a private backup copy for thirty days are independent obligations with no scenario where one forces violation of the other.",
+            "relation": "compatible",
+            "rule_ids": [
+              2,
+              3
+            ],
+            "rules": [
+              "Never publish a ticket until its review is complete.",
+              "Keep a private backup copy of each ticket for thirty days."
+            ],
+            "witness": ""
+          }
+        ],
+        "policy_sha256": "46bbca72c584dd6e586bddee0c98a6218a5be12fe9fce7c3387c5935a16b05ae",
+        "review_priority": [
+          1,
+          2
+        ],
+        "summary": "conflicts_found",
+        "unknown_pairs": []
+      },
+      "id": "1",
+      "owner": "0xF10aB469555eb723d62A565217EE678A8C200526",
+      "rules": [
+        "Publish every ticket immediately when it is created.",
+        "Never publish a ticket until its review is complete.",
+        "Keep a private backup copy of each ticket for thirty days."
+      ],
+      "scope": "Both rules apply to every newly created public support ticket. Reviews take time and are not complete at creation. Neither rule has exceptions.",
+      "sha256": "46bbca72c584dd6e586bddee0c98a6218a5be12fe9fce7c3387c5935a16b05ae",
+      "status": "analyzed"
+    }
+  ]
+}

@@ -10,7 +10,12 @@ export function installRpcRouting(address) {
     try{body=JSON.parse(options.body);}catch{return originalFetch(url,options);}
     if(body.method==='eth_call' && body.params?.[0]) body.params[0].from ??= address;
     const target=body.method.startsWith('eth_')? CHAIN_RPC:NODE_RPC;
-    const response=await originalFetch(target,{...options,body:JSON.stringify(body),signal:options.signal??AbortSignal.timeout(45000)});
+    let response;
+    const readOnly=body.method==='eth_call'||body.method==='eth_chainId'||body.method.startsWith('eth_get')||body.method.startsWith('gen_get');
+    for(let attempt=0;;attempt++){
+      try{response=await originalFetch(target,{...options,body:JSON.stringify(body),signal:options.signal??AbortSignal.timeout(45000)});break;}
+      catch(error){if(!readOnly||attempt>=3)throw error;await new Promise(r=>setTimeout(r,1000));}
+    }
     if(body.method==='eth_estimateGas'){
       const result=await response.clone().json();
       globalThis.__genlayerEstimateFailed=!!result.error;
